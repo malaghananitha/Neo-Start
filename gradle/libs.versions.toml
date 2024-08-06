@@ -1,0 +1,40 @@
+[versions]
+agp = "8.4.0"
+kotlin = "1.9.0"
+coreKtx = "1.13.1"
+junit = "4.13.2"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
+appcompat = "1.7.0"
+material = "1.12.0"
+activity = "1.9.0"
+constraintlayout = "2.1.4"
+fragment = "1.5.3"
+room_version = "2.5.2"
+viewmodel_version = "2.4.0"
+databinding_version = "7.0.0"
+lifecycle_ext = "2.2.0"
+legacySupportV4 = "1.0.0"
+lifecycleLivedataKtx = "2.8.4"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+androidx-fragment = { group = "androidx.fragment", name = "fragment-ktx" , version.ref = "fragment" }
+androidx-room-compiler = {group = "androidx.room", name ="room-compiler", version.ref = "room_version" }
+androidx-lifecycle = {group = "androidx.lifecycle", name =  "lifecycle-viewmodel-ktx", version.ref = "viewmodel_version" }
+androidx-databinding = {group = "androidx.databinding", name = "databinding-runtime", version.ref = "databinding_version"}
+androidx-lifecycle-ext = {group = "androidx.lifecycle", name = "lifecycle-extensions", version.ref = "lifecycle_ext"}
+androidx-legacy-support-v4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacySupportV4" }
+androidx-lifecycle-livedata-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

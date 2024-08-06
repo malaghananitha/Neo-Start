@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.neostart.viewmodel.RegisterViewModel" />
+    </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="20dp"
+            android:padding="16dp">
+
+            <include
+                android:id="@+id/incl_fragment_register_toolbar"
+                layout="@layout/custom_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <!-- Border Layer -->
+                <ImageView
+                    android:id="@+id/ivBoarderProfilePic"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/border"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Rounded Image Layer -->
+                <ImageView
+                    android:id="@+id/ivProfilePic"
+                    android:layout_width="98dp"
+                    android:layout_height="98dp"
+                    android:background="@drawable/round_mask"
+                    android:clipToOutline="true"
+                    android:onClick="@{() -> viewModel.onProfilePicClicked()}"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_profile_pic"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/ivBoarderProfilePic"
+                    app:layout_constraintStart_toEndOf="@+id/ivBoarderProfilePic"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ivBoarderEditIcon"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:onClick="@{() -> viewModel.onProfilePicClicked()}"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/border"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivEdit"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:padding="2dp"
+                        android:background="@drawable/round_mask"
+                        android:clipToOutline="true"
+                        android:onClick="@{() -> viewModel.onProfilePicClicked()}"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_edit"
+                        app:flow_verticalBias="0.5"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivBoarderEditIcon"
+                        app:layout_constraintEnd_toEndOf="@+id/ivBoarderEditIcon"
+                        app:layout_constraintStart_toStartOf="@+id/ivBoarderEditIcon"
+                        app:layout_constraintTop_toTopOf="@+id/ivBoarderEditIcon" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/tvFirstName"
+                android:text="First Name*"
+                style="@style/CommonTextViewStyle"/>
+            <EditText
+                android:id="@+id/etFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Enter your first name here"
+                android:drawablePadding="5dp"
+                android:background="@drawable/edittext_background"
+                android:drawableStart="@drawable/ic_user"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/tvLastName"
+                android:text="Last Name*"
+                style="@style/CommonTextViewStyle"/>
+
+            <EditText
+                android:id="@+id/etLastName"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Enter your last name here"
+                android:background="@drawable/edittext_background"
+                android:drawableStart="@drawable/ic_user"
+                android:drawablePadding="5dp"
+                android:padding="10dp" />
+
+            <TextView
+                android:id="@+id/tvPhoneNumber"
+                android:text="Phone Number*"
+                style="@style/CommonTextViewStyle"/>
+
+            <EditText
+                android:id="@+id/etPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Enter your 10 digits phone number"
+                android:background="@drawable/edittext_background"
+                android:drawableStart="@drawable/ic_phone"
+                android:drawablePadding="5dp"
+                android:padding="10dp"
+                android:inputType="phone"/>
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:text="Email*"
+                style="@style/CommonTextViewStyle"/>
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Your email goes here"
+                android:background="@drawable/edittext_background"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="5dp"
+                android:padding="10dp"
+                android:layout_marginTop="8dp"
+                android:inputType="textEmailAddress"/>
+
+            <TextView
+                android:id="@+id/tvGender"
+                android:text="Gender"
+                style="@style/CommonTextViewStyle"/>
+            <RadioGroup
+                android:id="@+id/rgGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:textSize="18sp"/>
+
+                <RadioButton
+                    android:id="@+id/rbFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:textSize="18sp"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tvPassword"
+                android:text="Password*"
+                style="@style/CommonTextViewStyle"/>
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Password"
+                android:background="@drawable/edittext_background"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawablePadding="5dp"
+                android:drawableEnd="@drawable/ic_visibility"
+                android:padding="10dp"
+                android:layout_marginTop="8dp"
+                android:inputType="textPassword"/>
+
+            <TextView
+                android:id="@+id/tvConfirmPassword"
+                android:text="Confirm Password"
+                style="@style/CommonTextViewStyle"/>
+
+            <EditText
+                android:id="@+id/etConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="Password"
+                android:background="@drawable/edittext_background"
+                android:drawableStart="@drawable/ic_lock"
+                android:drawablePadding="5dp"
+                android:padding="10dp"
+                android:layout_marginTop="8dp"
+                android:inputType="textPassword"/>
+
+            <Button
+                android:id="@+id/btnNext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Next"
+                android:layout_marginTop="16dp"/>
+        </LinearLayout>
+    </ScrollView>
+</layout>

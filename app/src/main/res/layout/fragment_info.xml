@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.neostart.viewmodel.InfoViewModel" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <include
+            android:id="@+id/incl_fragment_info_toolbar"
+            layout="@layout/custom_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginHorizontal="20dp"
+                tools:context=".InfoFragment">
+
+
+                <TextView
+                    android:text="Educational Info"
+                    style="@style/CommonHeaderViewStyle"
+                    android:layout_marginTop="16dp" />
+
+                <TextView
+                    android:id="@+id/tvEducation"
+                    android:text="Education*"
+                    style="@style/CommonTextViewStyle"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/actvQualification"
+                    style="@style/AutoCompleteTextViewStyle"
+                    android:hint="@string/education_prompt"/>
+
+                <TextView
+                    android:id="@+id/tvYearOfPassing"
+                    android:text="Year Of Passing*"
+                    style="@style/CommonTextViewStyle"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/actvYearOfPassing"
+                    style="@style/AutoCompleteTextViewStyle"
+                    android:hint="@string/year_of_passing_prompt"/>
+
+                <TextView
+                    android:id="@+id/tvGrade"
+                    android:text="Grade*"
+                    style="@style/CommonTextViewStyle"/>
+
+                <EditText
+                    android:id="@+id/etGrade"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Enter your Grade or Percentage"
+                    android:layout_marginTop="8dp"
+                    android:inputType="text"
+                    android:background="@drawable/edittext_background"
+                    android:padding="10dp"/>
+
+                <TextView
+                    android:text="Professional Info"
+                    style="@style/CommonHeaderViewStyle"
+                    android:layout_marginTop="16dp" />
+
+                <TextView
+                    android:id="@+id/tvExperience"
+                    android:text="Experience*"
+                    style="@style/CommonTextViewStyle"/>
+
+                <EditText
+                    android:id="@+id/etExperience"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:hint="Enter the years of experience"
+                    android:layout_marginTop="8dp"
+                    android:inputType="number"
+                    android:background="@drawable/edittext_background"
+                    android:padding="10dp"/>
+
+                <TextView
+                    android:id="@+id/tvDesignation"
+                    android:text="Designation*"
+                    style="@style/CommonTextViewStyle"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/actvDesignation"
+                    style="@style/AutoCompleteTextViewStyle"
+                    android:hint="@string/designation_prompt"/>
+
+                <TextView
+                    android:id="@+id/tvDomain"
+                    android:text="Domain"
+                    style="@style/CommonTextViewStyle"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/actvDomain"
+                    style="@style/AutoCompleteTextViewStyle"
+                    android:hint="@string/domain_prompt"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp">
+
+                    <Button
+                        android:id="@+id/btnPrevious"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Previous"
+                        android:layout_marginEnd="15dp"/>
+
+                    <Button
+                        android:id="@+id/btnNext"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Next" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

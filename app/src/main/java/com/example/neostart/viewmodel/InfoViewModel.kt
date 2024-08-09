@@ -1,12 +1,16 @@
 package com.example.neostart.viewmodel
 
-import android.content.Context
-import android.util.Patterns
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.example.neostart.util.DialogUtils
 
-class InfoViewModel : ViewModel() {
+
+import com.example.neostart.model.RegisterEntity
+import com.example.neostart.util.DialogUtils
+import android.app.Application
+import android.content.Context
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
+
+
+class InfoViewModel(application: Application): AndroidViewModel(application) {
     val qualification = MutableLiveData<String>()
     val yearOfPassing = MutableLiveData<String>()
     val grade = MutableLiveData<String>()
@@ -14,6 +18,8 @@ class InfoViewModel : ViewModel() {
     val designation = MutableLiveData<String>()
     val domain = MutableLiveData<String>()
 
+
+    var registerEntity: RegisterEntity? = null
 
     fun isFormValid(context: Context): Boolean {
         // Validate qualification (required)
@@ -71,4 +77,5 @@ class InfoViewModel : ViewModel() {
     fun onNextClicked() {
         // Handle next button click
     }
+
 }

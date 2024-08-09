@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="FABTheme" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/primary_color</item>
+        <item name="rippleColor">@color/background_color</item>
+        <item name="fabSize">normal</item>
+    </style>
     <style name="CommonToolbarTitleTextStyle">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">30sp</item>
@@ -22,6 +27,11 @@
         <item name="android:textStyle">bold</item>
         <item name="android:paddingBottom">5dp</item>
         <item name="android:layout_marginTop">8dp</item>
+    </style>
+
+    <style name="CommonEditTextTextStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
 

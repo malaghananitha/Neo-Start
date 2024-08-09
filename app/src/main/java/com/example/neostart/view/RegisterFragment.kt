@@ -1,11 +1,10 @@
-package com.example.neostart.ui
+package com.example.neostart.view
 
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
-import android.os.Environment
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
@@ -18,14 +17,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.neostart.R
 import com.example.neostart.databinding.FragmentRegisterBinding
+import com.example.neostart.model.RegisterEntity
 import com.example.neostart.viewmodel.RegisterViewModel
-import java.io.File
 import java.io.IOException
 
 class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterBinding
-    private val viewModel: RegisterViewModel by viewModels()
+    private val registerViewModel:RegisterViewModel by viewModels()
     private lateinit var cameraLauncher: ActivityResultLauncher<Intent>
     private lateinit var galleryLauncher: ActivityResultLauncher<Intent>
     private var photoURI: Uri? = null
@@ -33,9 +32,9 @@ class RegisterFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentRegisterBinding.inflate(inflater, container, false).apply {
-            viewModel = this@RegisterFragment.viewModel
+            viewModel = this@RegisterFragment.registerViewModel
             lifecycleOwner = viewLifecycleOwner
         }
 
@@ -48,10 +47,9 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.profilePicClick.observe(viewLifecycleOwner, Observer {
+        registerViewModel.profilePicClick.observe(viewLifecycleOwner, Observer {
             showImagePickerDialog()
         })
-
         with(binding) {
             viewModel?.let {
                 etFirstName.addTextChangedListener(GenericTextWatcher(it.firstName))
@@ -83,10 +81,23 @@ class RegisterFragment : Fragment() {
             }
 
         binding.btnNext.setOnClickListener {
-            if (viewModel.isFormValid(requireContext())) {
-                // Create an instance of InfoFragment
-                val infoFragment = InfoFragment()
+            if (registerViewModel.isFormValid(requireContext())) {
+                val registerEntity = RegisterEntity(
+                    firstName = registerViewModel.firstName.value ?: "",
+                    lastName = registerViewModel.lastName.value ?: "",
+                    email = registerViewModel.email.value ?: "",
+                    password = registerViewModel.password.value ?: "",
+                    confirmPassword = registerViewModel.confirmPassword.value ?: "",
+                    mobileNumber = registerViewModel.mobileNumber.value ?: "",
+                    gender = registerViewModel.gender.value ?: "",
+                    currentPhotoPath = registerViewModel.currentPhotoPath
+                )
 
+                val bundle = Bundle()
+                bundle.putParcelable("registerEntity", registerEntity)
+
+                val infoFragment = InfoFragment()
+                infoFragment.arguments = bundle
                 // Begin a fragment transaction
                 parentFragmentManager.beginTransaction()
                     .replace(
@@ -94,16 +105,16 @@ class RegisterFragment : Fragment() {
                         infoFragment
                     ) // Replace 'fragment_container' with your actual container ID
                     .addToBackStack(null) // Optional: Add this fragment transaction to the back stack
-                    .commit() // Commit the transaction
+                    .commit() //
             }
         }
 
         binding.rbMale.setOnClickListener {
-            viewModel.gender.value = "Male"
+            registerViewModel.gender.value = "Male"
         }
 
         binding.rbFemale.setOnClickListener {
-            viewModel.gender.value = "Female"
+            registerViewModel.gender.value = "Female"
         }
     }
 
@@ -124,7 +135,7 @@ class RegisterFragment : Fragment() {
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
             takePictureIntent.resolveActivity(requireActivity().packageManager).also {
                 try {
-                    val file = viewModel.createImageFile(requireContext())
+                    val file = registerViewModel.createImageFile(requireContext())
                     photoURI = FileProvider.getUriForFile(
                         requireContext(),
                         "com.example.neostart.fileprovider",

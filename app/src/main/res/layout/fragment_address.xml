@@ -30,7 +30,7 @@
 
 
                 <EditText
-                    android:id="@+id/editTextAddress"
+                    android:id="@+id/etAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Address"
@@ -42,7 +42,7 @@
                     android:padding="10dp"/>
 
                 <EditText
-                    android:id="@+id/editTextLandmark"
+                    android:id="@+id/etLandmark"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Landmark"
@@ -54,7 +54,7 @@
                     android:background="@drawable/edittext_background" />
 
                 <EditText
-                    android:id="@+id/editTextCity"
+                    android:id="@+id/etCity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="City"
@@ -66,14 +66,14 @@
                     android:background="@drawable/edittext_background" />
 
                 <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextViewState"
+                    android:id="@+id/actvState"
                     style="@style/AutoCompleteTextViewStyle"
                     android:layout_marginTop="25dp"
                     android:hint="@string/state_prompt"
                     android:imeOptions="actionNext"/>
 
                 <EditText
-                    android:id="@+id/editTextPinCode"
+                    android:id="@+id/etPinCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Pin Code"

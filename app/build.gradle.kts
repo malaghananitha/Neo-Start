@@ -50,8 +50,15 @@ dependencies {
     implementation(libs.androidx.lifecycle.ext)
     implementation(libs.androidx.legacy.support.v4)
     implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.navigation.ui)
+    implementation(libs.androidx.fragment)
+    implementation(libs.glide)
+    implementation(libs.glide.compiler)
     kapt(libs.androidx.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 }

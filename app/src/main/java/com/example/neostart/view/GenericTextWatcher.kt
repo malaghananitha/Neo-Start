@@ -1,4 +1,4 @@
-package com.example.neostart.ui
+package com.example.neostart.view
 
 import android.text.Editable
 import android.text.TextWatcher

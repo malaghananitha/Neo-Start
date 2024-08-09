@@ -6,6 +6,7 @@ import android.os.Environment
 import android.util.Patterns
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.example.neostart.db.NeoStartDatabase
 import com.example.neostart.util.DialogUtils
 import java.io.File
 import java.io.IOException
@@ -13,7 +14,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
 
-class RegisterViewModel(application: Application) : AndroidViewModel(application) {
+class RegisterViewModel(application: Application):AndroidViewModel(application) {
 
     var firstName = MutableLiveData<String>()
     var lastName = MutableLiveData<String>()
@@ -25,6 +26,8 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
     var gender = MutableLiveData<String>()
     var currentPhotoPath: String? = null
 
+    private val registerDao = NeoStartDatabase.getDatabase(application).registerDao()
+
     private val passwordPattern = Pattern.compile(
         "^(?=.*[0-9])(?=.*[!@#\$%^&*])(?=\\S+$).{6,}$"
     )
@@ -33,24 +36,19 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
         profilePicClick.value = Unit
     }
 
-    // Create an image file in the provided context
     @Throws(IOException::class)
     fun createImageFile(context: Context): File {
-        // Create an image file name
         val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date())
-        val storageDir: File =
-            context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!
+        val storageDir: File = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)!!
         return File.createTempFile(
-            "JPEG_${timeStamp}_", /* prefix */
-            ".jpg", /* suffix */
-            storageDir /* directory */
+            "JPEG_${timeStamp}_",
+            ".jpg",
+            storageDir
         ).apply {
-            // Save a file: path for use with ACTION_VIEW intents
             currentPhotoPath = absolutePath
         }
     }
 
-    // Connectivity
     fun isFormValid(context: Context): Boolean {
         if (firstName.value.isNullOrEmpty() || firstName.value!!.length < 3) {
             showValidationErrors("First name must be more than 3 characters", context)
@@ -98,4 +96,6 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
             positiveButtonText = "OK",
         )
     }
+
+
 }
